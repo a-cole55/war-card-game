@@ -33,24 +33,31 @@ function drawTwo(){
         if (data.remaining == 0){
           document.querySelector('h3').innerText = 'GAME OVER';
         }
-        document.querySelector('#player1').src = data.cards[0].image 
+        document.querySelector('#player1').src = data.cards[0].image;
         document.querySelector('#player2').src = data.cards[1].image
         let player1Val = convertToNum(data.cards[0].value)
         let player2Val = convertToNum(data.cards[1].value)
         //check winner and score
+        document.querySelector('h3').innerText = '';
         if(player1Val > player2Val){
-          document.querySelector('h3').innerText = 'You Win!';
-          score1 += 1;
-          document.querySelector('#player1Score').innerText=`${score1}`;
-          document.querySelector('#player2Score').innerText=`${score2}`;
+          setTimeout(function(){
+            document.querySelector('h3').innerText = 'You Win!';
+            score1 += 1;
+            document.querySelector('#player1Score').innerText=`${score1}`;
+            document.querySelector('#player2Score').innerText=`${score2}`;;
+           }, 1000);
         }else if(player1Val < player2Val){
-          document.querySelector('h3').innerText = 'Computer Wins!';
-          score2 += 1;
-          document.querySelector('#player1Score').innerText=`${score1}`;
-          document.querySelector('#player2Score').innerText=`${score2}`;
+          setTimeout(function(){
+            document.querySelector('h3').innerText = 'Computer Wins!';
+            score2 += 1;
+            document.querySelector('#player1Score').innerText=`${score1}`;
+            document.querySelector('#player2Score').innerText=`${score2}`;;
+           }, 1000);
         }else{
           document.querySelector('h3').innerText = 'War!';
-          setTimeout (war(), 15000)
+          setTimeout(function(){
+            war();
+           }, 1000);
         }
         return score1, score2
       })
@@ -90,12 +97,12 @@ function war(score1,score2){
         let player2Val = convertToNum(data.cards[3].value + data.cards[4].value + data.cards[5].value)
         if(player1Val > player2Val){
           document.querySelector('h3').innerText = 'You Win';
-          play1Score += 3;
+          score1 += 3;
           document.querySelector('#player1Score').innerText=`${score1}`;
           document.querySelector('#player2Score').innerText=`${score2}`;
         }else if(player1Val < player2Val){
           document.querySelector('h3').innerText = 'Computer Wins'
-          play2Score += 3;
+          score2 += 3;
           document.querySelector('#player1Score').innerText=`${score1}`;
           document.querySelector('#player2Score').innerText=`${score2}`;
         }else{

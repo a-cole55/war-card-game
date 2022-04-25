@@ -13,7 +13,7 @@ html{
 /* LAYOUT
 /*******************************************/
 body{
-  background: url('/bg.jpg') repeat center/cover;
+  background: url('../bg.jpg') repeat center/cover;
   background-color: green;
   color:white;
   font-family: 'Noto Serif', serif;
