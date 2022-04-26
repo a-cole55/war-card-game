@@ -38,26 +38,26 @@ function drawTwo(){
         let player1Val = convertToNum(data.cards[0].value)
         let player2Val = convertToNum(data.cards[1].value)
         //check winner and score
-        document.querySelector('h3').innerText = '';
+        // document.querySelector('h3').innerText = '';
         if(player1Val > player2Val){
           setTimeout(function(){
             document.querySelector('h3').innerText = 'You Win!';
             score1 += 1;
             document.querySelector('#player1Score').innerText=`${score1}`;
             document.querySelector('#player2Score').innerText=`${score2}`;;
-           }, 1000);
+           }, 500);
         }else if(player1Val < player2Val){
           setTimeout(function(){
             document.querySelector('h3').innerText = 'Computer Wins!';
             score2 += 1;
             document.querySelector('#player1Score').innerText=`${score1}`;
             document.querySelector('#player2Score').innerText=`${score2}`;;
-           }, 1000);
+           }, 500);
         }else{
           document.querySelector('h3').innerText = 'War!';
           setTimeout(function(){
-            war();
-           }, 1000);
+            war(score1,score2);
+           }, 2500);
         }
         return score1, score2
       })
@@ -93,24 +93,35 @@ function war(score1,score2){
         document.querySelector('#player2').src = data.cards[3].image
         document.querySelector('#player22').src = data.cards[4].image
         document.querySelector('#player23').src = data.cards[5].image
-        let player1Val = convertToNum(data.cards[0].value + data.cards[1].value + data.cards[2].value)
-        let player2Val = convertToNum(data.cards[3].value + data.cards[4].value + data.cards[5].value)
+        let player1Val = Number(convertToNum(data.cards[0].value)) + Number(convertToNum(data.cards[1].value)) + Number(convertToNum(data.cards[2].value))
+        let player2Val = Number(convertToNum(data.cards[3].value)) + Number(convertToNum(data.cards[4].value)) + Number(convertToNum(data.cards[5].value))
+        console.log(player1Val, player2Val)
         if(player1Val > player2Val){
-          document.querySelector('h3').innerText = 'You Win';
+          document.querySelector('h3').innerText = 'You Win!';
           score1 += 3;
           document.querySelector('#player1Score').innerText=`${score1}`;
           document.querySelector('#player2Score').innerText=`${score2}`;
+          setTimeout(function(){
+            drawTwo(score1,score2);
+           }, 1000);
         }else if(player1Val < player2Val){
-          document.querySelector('h3').innerText = 'Computer Wins'
+          document.querySelector('h3').innerText = 'Computer Wins!'
           score2 += 3;
           document.querySelector('#player1Score').innerText=`${score1}`;
           document.querySelector('#player2Score').innerText=`${score2}`;
+          setTimeout(function(){
+            drawTwo(score1,score2);
+           }, 1000);
         }else{
           document.querySelector('h3').innerText = 'War!'
+          setTimeout(function(){
+            war(score1,score2);
+           }, 2500);
         }
-        return score1, score2
+        // return score1, score2
       })
       .catch(err => {
           console.log(`error ${err}`)
       });
+      return score1, score2
 }
