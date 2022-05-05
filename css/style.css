@@ -13,7 +13,7 @@ html{
 /* LAYOUT
 /*******************************************/
 body{
-  background: url('../bg.jpg') repeat center/cover;
+  background: url('../img/bg2.jpg') repeat center/cover;
   background-color: green;
   color:white;
   font-family: 'Noto Serif', serif;
@@ -25,7 +25,7 @@ body{
   align-items: center;
 }
 #homePhoto{
-  width: 40%;
+  width: 45%;
 }
 img{
   display: block;
@@ -41,20 +41,24 @@ img{
   justify-content: center;
 }
 h1{
-  text-shadow: white 2px 3px 4px;
-  opacity:0.9;
+  text-shadow: #045012 2px 3px 4px;
+  opacity:0.8;
   color:red;
-  font-size:6rem;
+  font-size:4.5rem;
   margin: 1% 0;
 }
 button{
-  border:1px solid white black;
+  border:1px solid #045012;
   box-shadow: 1px 2px 4px gray;
-  opacity:0.95;
+  opacity:0.9;
   height:2.5em;
-  width:7em;
-  font-size: 2rem;
+  width:8em;
+  font-size: 1.5rem;
   margin:2% 0;
+  text-transform: uppercase;
+  /* background-color: #120450; */
+  color:#120450;
+  cursor: pointer;
 }
 #cardInfo{
   width:100%;
